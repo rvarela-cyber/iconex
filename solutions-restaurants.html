@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iconex - Restaurants & Food Service | Industry Page Wireframe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --iconex-blue: #013088;
+            --iconex-blue-light: #013088;
+            --iconex-red: #c41230;
+            --iconex-gold: #fec62b;
+            --iconex-gold-light: #d4b03a;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --white: #ffffff;
+            --wireframe-bg: #f0f4f8;
+            --wireframe-border: #94a3b8;
+            --wireframe-placeholder: #e2e8f0;
+            --icon-green: #d4e5d4;
+            --icon-green-dark: #6b8e6b;
+            --icon-blue: #dde5f0;
+            --icon-blue-dark: #5a7ab8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--wireframe-bg);
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        /* Wireframe Label */
+        .wireframe-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--iconex-red);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(196, 18, 48, 0.3);
+        }
+
+        .page-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 0 60px rgba(0,0,0,0.1);
+        }
+
+        /* Section Labels */
+        .section-label {
+            display: inline-block;
+            background: var(--iconex-blue);
+            color: white;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-note {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #92400e;
+            margin: 16px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .section-note strong {
+            color: #78350f;
+        }
+
+        /* Utility Bar */
+        .utility-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 13px;
+        }
+
+        .utility-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray-400);
+        }
+
+        .search-icon {
+            font-size: 14px;
+        }
+
+        .search-text {
+            color: var(--gray-400);
+        }
+
+        .utility-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .utility-phone {
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .utility-link {
+            color: var(--iconex-blue);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .utility-link-outline {
+            border: 1px solid var(--iconex-blue);
+            padding: 6px 14px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .utility-lang {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--gray-600);
+        }
+
+        .lang-icon {
+            font-size: 16px;
+        }
+
+        .dropdown-arrow {
+            font-size: 8px;
+            margin-left: 4px;
+        }
+
+        /* Main Header/Nav */
+        .header {
+            background: var(--white);
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-ic {
+            color: var(--iconex-blue);
+        }
+
+        .logo-o {
+            color: var(--iconex-blue);
+            font-size: 28px;
+            margin: 0 -2px;
+        }
+
+        .logo-nex {
+            color: var(--iconex-blue);
+        }
+
+        .logo-dot {
+            color: var(--iconex-blue);
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link-blue {
+            color: var(--iconex-blue);
+            font-weight: 600;
+        }
+
+        .nav-link-red {
+            color: var(--iconex-red);
+            font-weight: 600;
+        }
+
+        .nav-link .dropdown-arrow {
+            color: inherit;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background-color: #013088 !important;
+            color: #ffffff !important;
+            padding: 80px 40px;
+            overflow: hidden;
+        }
+
+        .hero * {
+            color: #ffffff;
+        }
+
+        .hero::before {
+            display: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fec62b !important;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #ffffff !important;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .hero-image-placeholder {
+            background: rgba(255,255,255,0.15);
+            border: 2px dashed rgba(255,255,255,0.4);
+            border-radius: 12px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .placeholder-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        /* Content Sections */
+        section {
+            padding: 60px 40px;
+        }
+
+        section:nth-child(even) {
+            background: var(--gray-50);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto 48px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--iconex-blue);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 17px;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* Problem Table */
+        .problem-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 32px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .problem-table th {
+            background: var(--iconex-blue);
+            color: white;
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .problem-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 14px;
+        }
+
+        .problem-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .problem-table tr:hover {
+            background: var(--gray-50);
+        }
+
+        .method-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--gray-200);
+            color: var(--gray-700);
+            border-radius: 6px;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+
+        .problem-badge {
+            display: inline-block;
+            background: #fef2f2;
+            color: #991b1b;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin: 2px;
+        }
+
+        /* Solution Grid */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .solution-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+            border-color: var(--iconex-blue-light);
+        }
+
+        .solution-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--icon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--icon-green-dark);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .solution-card:nth-child(2) .solution-icon {
+            background: var(--icon-blue);
+            color: var(--icon-blue-dark);
+        }
+
+        .solution-card:nth-child(3) .solution-icon {
+            background: var(--icon-green);
+            color: var(--icon-green-dark);
+        }
+
+        .solution-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 12px;
+        }
+
+        .solution-card ul {
+            list-style: none;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .solution-card li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .solution-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--icon-green-dark);
+            font-weight: 700;
+        }
+
+        /* ROI Section */
+        .roi-section {
+            background-color: #013088 !important;
+            color: #ffffff !important;
+        }
+
+        .roi-section .section-header h2 {
+            color: #ffffff !important;
+        }
+
+        .roi-section .section-header p {
+            color: #ffffff !important;
+            opacity: 0.9;
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .roi-calculator {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 20px 32px 24px 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .roi-headline {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .roi-amount {
+            font-size: 56px;
+            font-weight: 800;
+            color: #fec62b;
+        }
+
+        .roi-period {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        .roi-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .roi-item {
+            background: rgba(255,255,255,0.1);
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .roi-item-label {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+
+        .roi-item-value {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .savings-list {
+            list-style: none;
+        }
+
+        .savings-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .savings-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--icon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .savings-list li:nth-child(2) .savings-icon {
+            background: var(--icon-blue);
+        }
+
+        .savings-list li:nth-child(3) .savings-icon {
+            background: var(--icon-green);
+        }
+
+        .savings-list li:nth-child(4) .savings-icon {
+            background: var(--icon-green);
+        }
+
+        .savings-text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .savings-text p {
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 72px;
+            color: var(--iconex-blue);
+            opacity: 0.1;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--gray-700);
+            font-style: italic;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-metric {
+            display: inline-block;
+            background: var(--icon-green);
+            color: var(--icon-green-dark);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 16px;
+            font-style: normal;
+        }
+
+        /* Applications Grid */
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+
+        .application-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .application-card:hover {
+            border-color: var(--iconex-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .application-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--icon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 24px;
+        }
+
+        .application-card h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        /* Products Section */
+        .products-intro {
+            background: var(--iconex-blue);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .products-intro h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .products-intro p {
+            opacity: 0.8;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .view-all-btn {
+            background: #fec62b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .view-all-btn:hover {
+            background: #e5b228;
+            color: white;
+        }
+
+        .product-category {
+            margin-bottom: 40px;
+        }
+
+        .product-category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .category-number {
+            width: 32px;
+            height: 32px;
+            background: var(--iconex-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .product-category-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        /* Product List Styles (replacing grid) */
+        .product-list-category {
+            margin-bottom: 40px;
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .product-list-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .product-list-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        .category-description {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-200);
+            line-height: 1.6;
+        }
+
+        .product-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .product-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-100);
+            gap: 24px;
+        }
+
+        .product-list-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .product-list-item:first-child {
+            padding-top: 0;
+        }
+
+        .product-list-content {
+            flex: 1;
+        }
+
+        .product-list-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--iconex-blue);
+            margin-bottom: 8px;
+        }
+
+        .product-list-content p {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .product-list-link {
+            flex-shrink: 0;
+            background: var(--gray-100);
+            color: var(--iconex-blue);
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .product-list-link:hover {
+            background: var(--iconex-blue);
+            color: white;
+        }
+
+        /* Resources Bar */
+        .resources-bar {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .resources-bar h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin: 0;
+        }
+
+        .resources-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .resource-link-inline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--iconex-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            background: white;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .resource-link-inline:hover {
+            background: var(--iconex-blue);
+            color: white;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #7f1d1d !important;
+            color: #ffffff !important;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: var(--iconex-red);
+        }
+
+        .cta-btn-primary:hover {
+            background: #fec62b;
+            color: var(--iconex-blue);
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-btn-secondary:hover {
+            background: white;
+            color: var(--iconex-red);
+        }
+
+        /* Sidebar Contact Form */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 40px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .sidebar-form {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .sidebar-form h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 14px;
+            background: var(--gray-50);
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--iconex-blue);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--iconex-blue-light);
+        }
+
+        .sidebar-resources {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .sidebar-resources h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gray-700);
+            margin-bottom: 12px;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            color: var(--iconex-blue);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .resource-link:hover {
+            color: var(--iconex-red);
+        }
+
+        .resource-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gray-100);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-800);
+            color: white;
+            padding: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .footer-logo span {
+            color: var(--iconex-red);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        /* Annotations */
+        .annotation {
+            position: absolute;
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #92400e;
+            white-space: nowrap;
+            z-index: 100;
+        }
+
+        .annotation::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- Top Utility Bar -->
+        <div class="utility-bar">
+            <div class="utility-left">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <span class="search-text">Search by keyword...</span>
+                </div>
+            </div>
+            <div class="utility-right">
+                <span class="utility-phone">800-543-8130</span>
+                <a href="#" class="utility-link">Partner Portal</a>
+                <a href="#" class="utility-link utility-link-outline">Customer Portal</a>
+                <div class="utility-lang">
+                    <span class="lang-icon">🌐</span>
+                    <span>English</span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Header/Nav -->
+        <header class="header">
+            <div class="logo">
+                <span style="font-weight: 700; font-size: 24px; color: var(--iconex-blue);">ICONEX LOGO</span>
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="nav-link nav-link-red">Solutions <span class="dropdown-arrow">▼</span></a>
+                <a href="#" class="nav-link nav-link-blue">Products <span class="dropdown-arrow">▼</span></a>
+                <a href="#" class="nav-link">Sustainability <span class="dropdown-arrow">▼</span></a>
+                <a href="#" class="nav-link">Resources Library <span class="dropdown-arrow">▼</span></a>
+                <a href="#" class="nav-link">About Iconex <span class="dropdown-arrow">▼</span></a>
+            </nav>
+        </header>
+
+        <!-- SECTION 1: Hero -->
+        <section class="hero" style="background-color: #013088 !important;">
+            <div class="hero-content">
+                <div>
+                    <h1 style="color: #ffffff;">The Hidden Cost of Labeling Chaos in Your Kitchen</h1>
+                    <p class="hero-subtitle" style="color: #ffffff;">In the chaos of a lunch rush, one unlabeled order can cascade into customer complaints, remakes, and lost revenue. Today's restaurants simultaneously manage dine-in, mobile orders, delivery platforms, curbside pickup, and drive-thru—each demanding speed and accuracy under pressure.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number" style="color: #fec62b;">7/10</div>
+                            <div class="stat-label" style="color: #ffffff;">Top hospitality<br>chains trust Iconex</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" style="color: #fec62b;">25%</div>
+                            <div class="stat-label" style="color: #ffffff;">Reduction in<br>accuracy complaints</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" style="color: #fec62b;">$1,110</div>
+                            <div class="stat-label" style="color: #ffffff;">Net savings<br>per store/year</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image-placeholder" style="background: rgba(255,255,255,0.1); border: 2px dashed rgba(255,255,255,0.3);">
+                    <div class="placeholder-icon">🖼️</div>
+                    <div style="color: rgba(255,255,255,0.7);">Hero Image: Kitchen/Restaurant Scene</div>
+                    <div style="font-size: 12px; margin-top: 8px; color: rgba(255,255,255,0.6);">Show labels in action</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: The Problem -->
+        <section>
+            <div class="section-header">
+                <h2>Why Current Labeling Methods Are Failing Your Operation</h2>
+                <p>Most labeling methods have too many materials and steps and are difficult for crews to handle.<br>When processes are time-consuming or manual, mistakes happen.</p>
+            </div>
+
+            <table class="problem-table">
+                <thead>
+                    <tr>
+                        <th width="30%">Current Method</th>
+                        <th>The Problem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="method-icon">❌</span> No label at all</td>
+                        <td>
+                            <span class="problem-badge">Prep instructions not close to prep area</span>
+                            <span class="problem-badge">Distracting to look away from food</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-icon">📋</span> Tearing tape to attach receipts</td>
+                        <td>
+                            <span class="problem-badge">Gloves get stuck to labels</span>
+                            <span class="problem-badge">Dispenser easily misplaced</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-icon">🏷️</span> Peeling labels off liners</td>
+                        <td>
+                            <span class="problem-badge">Gloves get stuck to labels</span>
+                            <span class="problem-badge">Liner = waste to landfill</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-icon">📎</span> Stapling receipts</td>
+                        <td>
+                            <span class="problem-badge">Staples can fall into food</span>
+                            <span class="problem-badge">Stapler easily misplaced</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-icon">✏️</span> Grease pencils/markers</td>
+                        <td>
+                            <span class="problem-badge">Easily misplaced</span>
+                            <span class="problem-badge">Slow or difficult to read</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 3: The Iconex Solution -->
+        <section>
+            <div class="section-header">
+                <h2>How Iconex Solves the Restaurant Labeling Problem</h2>
+                <p>Iconex Sticky Media™ makes labeling orders easier in the hustle and bustle of your kitchen.<br>Allow your staff to focus on productivity and accuracy.</p>
+            </div>
+
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">⚡</div>
+                    <h3>Improved Productivity</h3>
+                    <ul>
+                        <li>One product eliminates multiple consumables</li>
+                        <li>Continuous roll = variable length labels</li>
+                        <li>No more searching for misplaced tools</li>
+                        <li>40% more labels per roll</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">🎯</div>
+                    <h3>Improved Accuracy</h3>
+                    <ul>
+                        <li>Offset adhesive—grab paper, not glue</li>
+                        <li>Gloves don't stick to Iconex labels</li>
+                        <li>Increased heat resistance</li>
+                        <li>KDS integration ready</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">😊</div>
+                    <h3>Customer Satisfaction</h3>
+                    <ul>
+                        <li>Shorter lines from faster service</li>
+                        <li>Increased revenue and margin</li>
+                        <li>Reduced printer jams</li>
+                        <li>Consistent uptime</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ROI / Business Impact -->
+        <section class="roi-section" style="background-color: #013088 !important;">
+            <div class="section-header">
+                <h2 style="color: #ffffff;">The Business Impact: Real Numbers</h2>
+                <p style="color: #ffffff;">For an investment of less than $890 per store, realize a bottom line net savings of $1,110 per store per year.</p>
+            </div>
+
+            <div class="roi-grid">
+                <div class="roi-calculator" style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 20px 32px 24px 32px;">
+                    <div class="roi-headline">
+                        <span class="roi-amount" style="color: #fec62b;">$1,110</span>
+                        <span class="roi-period" style="color: #ffffff;">net savings per store/year</span>
+                    </div>
+                    <div class="roi-breakdown">
+                        <div class="roi-item" style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 8px;">
+                            <div class="roi-item-label" style="color: rgba(255,255,255,0.7);">Initial Investment</div>
+                            <div class="roi-item-value" style="color: #ffffff;">$890</div>
+                        </div>
+                        <div class="roi-item" style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 8px;">
+                            <div class="roi-item-label" style="color: rgba(255,255,255,0.7);">Total Savings</div>
+                            <div class="roi-item-value" style="color: #ffffff;">$2,000</div>
+                        </div>
+                        <div class="roi-item" style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 8px;">
+                            <div class="roi-item-label" style="color: rgba(255,255,255,0.7);">Payback Period</div>
+                            <div class="roi-item-value" style="color: #ffffff;">~5 months</div>
+                        </div>
+                        <div class="roi-item" style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 8px;">
+                            <div class="roi-item-label" style="color: rgba(255,255,255,0.7);">1,000 Stores</div>
+                            <div class="roi-item-value" style="color: #ffffff;">$1.1M/year</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <ul class="savings-list" style="list-style: none; margin: 0; padding: 0;">
+                        <li style="display: flex; align-items: flex-start; gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <div class="savings-icon">💰</div>
+                            <div class="savings-text">
+                                <h4 style="color: #ffffff; margin-bottom: 4px;">Material Costs</h4>
+                                <p style="color: rgba(255,255,255,0.7); margin: 0;">Eliminate grease pens, excessive receipt paper, redundant supplies</p>
+                            </div>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <div class="savings-icon">🗑️</div>
+                            <div class="savings-text">
+                                <h4 style="color: #ffffff; margin-bottom: 4px;">Food Waste</h4>
+                                <p style="color: rgba(255,255,255,0.7); margin: 0;">Reduce waste from inaccurate orders and remakes</p>
+                            </div>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <div class="savings-icon">⏱️</div>
+                            <div class="savings-text">
+                                <h4 style="color: #ffffff; margin-bottom: 4px;">Labor Productivity</h4>
+                                <p style="color: rgba(255,255,255,0.7); margin: 0;">Faster order build times, less time remaking orders</p>
+                            </div>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 12px; padding: 16px 0;">
+                            <div class="savings-icon">📈</div>
+                            <div class="savings-text">
+                                <h4 style="color: #ffffff; margin-bottom: 4px;">Incremental Margin</h4>
+                                <p style="color: rgba(255,255,255,0.7); margin: 0;">Quicker orders = more customers served per hour</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Environmental Impact Banner -->
+        <section style="background-color: #4a5d23 !important; padding: 40px 40px;">
+            <div style="text-align: center;">
+                <p style="font-size: 20px; color: #ffffff; margin: 0 0 8px 0;">🌱 <strong>Environmental Impact:</strong></p>
+                <p style="font-size: 16px; color: rgba(255,255,255,0.9); margin: 0;">A 1,000-store chain eliminates approximately <strong>150,000 lbs</strong> of liner material from landfills annually.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Testimonials -->
+        <section>
+            <div class="section-header">
+                <h2>What Restaurant Operators Are Saying</h2>
+                <p>Real feedback from operations teams who made the switch to Iconex.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Eliminates pens and markers—saves about $500 per year."</p>
+                    <span class="testimonial-metric">$500 saved annually</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"There would be a revolt if we had to go back to the old way."</p>
+                    <span class="testimonial-metric">Crew loves it</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Crew uses grill slip procedure more consistently. Doesn't stick to gloves."</p>
+                    <span class="testimonial-metric">Better compliance</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Really helps during midday rush with all our web orders."</p>
+                    <span class="testimonial-metric">Peak performance</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"We would never go back to attaching scotch tape to receipts."</p>
+                    <span class="testimonial-metric">No going back</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Decreased our accuracy complaints by 25% since switching."</p>
+                    <span class="testimonial-metric">Happier customers</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Applications -->
+        <section>
+            <div class="section-header">
+                <h2>Solutions for Every Restaurant Operation</h2>
+                <p>Iconex labeling solutions work across all your restaurant touchpoints.</p>
+            </div>
+
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="application-icon">🍔</div>
+                    <h4>Custom Orders</h4>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🚗</div>
+                    <h4>Drive-Thru</h4>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">📦</div>
+                    <h4>Take Out</h4>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🥤</div>
+                    <h4>Beverages</h4>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">📅</div>
+                    <h4>Date Coding</h4>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🔒</div>
+                    <h4>Delivery Security</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: Products -->
+        <section>
+            <div class="products-intro">
+                <div>
+                    <h3>Explore Products for Restaurants & Food Service</h3>
+                    <p>Now that you understand HOW Iconex can transform your operation, explore our specific products.</p>
+                </div>
+                <a href="#" class="view-all-btn">View All Products →</a>
+            </div>
+
+            <!-- Restaurant Resources -->
+            <div class="resources-bar">
+                <h4>Restaurant Resources</h4>
+                <div class="resources-links">
+                    <a href="#" class="resource-link-inline">
+                        <span>📄</span> Sales Sheets
+                    </a>
+                    <a href="#" class="resource-link-inline">
+                        <span>📋</span> SDS Sheets
+                    </a>
+                    <a href="#" class="resource-link-inline">
+                        <span>📊</span> ROI Calculator
+                    </a>
+                    <a href="#" class="resource-link-inline">
+                        <span>🎥</span> Product Videos
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 8: CTA -->
+        <section class="cta-section" style="background-color: #013088 !important; padding: 60px 40px;">
+            <h2 style="color: #ffffff; font-size: 36px; font-weight: 800; margin-bottom: 16px;">Ready to Transform Your Restaurant Operations?</h2>
+            <p style="color: #ffffff; font-size: 18px; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Our team will run a custom ROI model for your specific operation. See exactly how much you could save.</p>
+            <div class="cta-buttons" style="display: flex; gap: 16px; justify-content: center;">
+                <a href="#" class="cta-btn cta-btn-primary" style="background: #fec62b; color: #ffffff; padding: 16px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none;">Get Custom ROI Analysis</a>
+                <a href="#" class="cta-btn cta-btn-secondary" style="background: transparent; color: #ffffff; border: 2px solid #ffffff; padding: 16px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none;">Download Restaurant Guide</a>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
