@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iconex – Carousel Demo (8 Products)</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #0032a0;
+  --gold: #f5c851;
+  --gray-light: #f5f5f5;
+  --gray-mid: #e0e0e0;
+  --text: #1a1a2e;
+}
+body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #fff; }
+
+
+
+/* ===== WIDGET AREA ===== */
+.widget-wrapper { background:#fff; }
+
+/* Combined nav bar: industry dropdown + solution tabs */
+.combined-nav {
+  background: #fff;
+  border-bottom: 3px solid var(--gold);
+  padding: 0 40px;
+  display: flex;
+  align-items: stretch;
+  position: sticky;
+  top: 0;
+  z-index: 190;
+  box-shadow: 0 2px 6px rgba(0,0,0,.07);
+}
+
+/* Industry dropdown */
+.industry-dropdown-wrap { position:relative; display:flex; align-items:center; border-right:2px solid var(--gray-mid); padding-right:20px; margin-right:8px; }
+.industry-btn {
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px;
+  white-space: nowrap;
+}
+.industry-btn .arrow { font-size: 10px; color: #000; transition: transform .2s; }
+.industry-btn.open .arrow { transform: rotate(180deg); }
+
+.industry-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
+  background: #fff;
+  border: 1px solid var(--gray-mid);
+  border-top: 3px solid var(--navy);
+  min-width: 280px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  z-index: 300;
+  border-radius: 0 0 4px 4px;
+}
+.industry-dropdown.open { display: block; }
+.industry-dropdown a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: none;
+  transition: background .15s;
+}
+.industry-dropdown a:hover { background: #f0f4ff; color: var(--navy); }
+.industry-dropdown a.active { color: var(--navy); font-weight: 700; background: #e8f0fe; }
+.industry-dropdown a:last-child { }
+
+/* Solution tabs */
+.solution-tabs { display:flex; align-items:stretch; flex:1; }
+.solution-tabs a {
+  text-decoration:none;
+  color:#444;
+  font-size:13px;
+  font-weight:500;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  border-bottom:3px solid transparent;
+  margin-bottom:-3px;
+  white-space:nowrap;
+  transition:all .2s;
+  cursor:pointer;
+}
+.solution-tabs a:hover, .solution-tabs a.active { color:var(--navy); border-bottom-color:var(--navy); font-weight:600; background:#f8f9ff; }
+.nav-spacer { flex:1; }
+.lets-talk-btn {
+  background: var(--gold);
+  color: #000;
+  padding: 9px 24px;
+  border-radius: 24px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  align-self: center;
+  margin-left: 16px;
+  transition: background .2s;
+  white-space: nowrap;
+}
+.lets-talk-btn:hover { background: #d4a93a; }
+
+/* PRODUCT CAROUSEL SECTION */
+.carousel-section { padding: 40px 40px; background: #fff; }
+
+.carousel-container { position:relative; }
+.carousel-track-wrap { overflow:hidden; width: calc(4 * 220px + 3 * 24px); margin: 0 auto; }
+.carousel-track { display:flex; gap:24px; transition:transform .35s ease; }
+
+.product-card {
+  background: #fff;
+  border: 1px solid var(--gray-mid);
+  border-radius: 6px;
+  width: 220px;
+  min-width: 220px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow .2s, transform .2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.product-card:hover { box-shadow: 0 6px 20px rgba(0,50,160,.12); transform: translateY(-3px); }
+.product-card .card-img {
+  width:100%; height:160px;
+  background: var(--gray-mid);
+  border:2px dashed #bbb;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; color:#888; text-align:center; font-weight:600;
+}
+.product-card .card-label {
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+  border-top: 1px solid var(--gray-mid);
+}
+.product-card:hover .card-label { color: var(--gold); }
+
+/* Arrow buttons */
+.carousel-arrows { display:flex; gap:10px; margin-top:20px; align-items:center; justify-content:center; }
+.arrow-btn {
+  width: 40px; height: 40px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items:center; justify-content:center;
+  transition: background .2s;
+}
+.arrow-btn:hover { background: var(--gold); }
+.arrow-btn:disabled { background: var(--gray-mid); cursor:not-allowed; }
+.arrow-note { font-size:12px; color:#888; font-style:italic; margin-left:8px; }
+
+/* CTA BAND */
+.cta-band { background:var(--navy); color:white; text-align:center; padding:52px 40px; }
+.cta-band h2 { font-size:28px; font-weight:800; margin-bottom:10px; }
+.cta-band p { font-size:14px; opacity:.85; margin-bottom:28px; }
+.btn-group { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-yellow { background:var(--gold); color:#000; padding:11px 26px; border:none; border-radius:24px; font-weight:700; font-size:14px; cursor:pointer; text-decoration:none; display:inline-block; transition:background .2s; }
+.btn-yellow:hover { background:#d4a93a; }
+.btn-outline-white { background:transparent; color:white; border:2px solid white; padding:10px 26px; border-radius:24px; font-weight:700; font-size:14px; text-decoration:none; display:inline-block; }
+.btn-outline-white:hover { background:rgba(255,255,255,.1); }
+</style>
+</head>
+<body>
+
+<!-- ===== MAIN WIDGET ===== -->
+<div class="widget-wrapper">
+
+  <!-- COMBINED NAV: Industry dropdown + Solution tabs -->
+  <div class="combined-nav" id="combinedNav">
+    <div class="industry-dropdown-wrap">
+      <button class="industry-btn" id="industryBtn" onclick="toggleDropdown()">
+        <span id="industryLabel">Restaurant &amp; Food Services</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="industry-dropdown" id="industryDropdown">
+        <a href="https://rvarela-cyber.github.io/iconex/01-Restaurants-Food-Services.html" class="active">Restaurants &amp; Food Service</a>
+        <a href="https://rvarela-cyber.github.io/iconex/02-Retail-Grocery.html">Retail &amp; Grocery</a>
+        <a href="https://rvarela-cyber.github.io/iconex/03-Pharmacy-Healthcare.html">Pharmacy &amp; Healthcare</a>
+        <a href="https://rvarela-cyber.github.io/iconex/04-Ecommerce.html">E-commerce</a>
+        <a href="https://rvarela-cyber.github.io/iconex/05-Distribution-Logistics.html">Distribution &amp; Logistics</a>
+        <a href="https://rvarela-cyber.github.io/iconex/06-Specialty-Applications.html">Specialty Applications</a>
+      </div>
+    </div>
+
+    <div class="solution-tabs" id="solutionTabs">
+      <a href="#" class="active" onclick="switchSolution(event, 'food-order')">Food Order Management</a>
+      <a href="#" onclick="switchSolution(event, 'order-delivery')">Order Delivery Security</a>
+      <a href="#" onclick="switchSolution(event, 'food-freshness')">Food Freshness and Date Coding</a>
+    </div>
+    <div class="nav-spacer"></div>
+    <a href="#" class="lets-talk-btn">Let's Talk</a>
+  </div>
+
+  <!-- CAROUSEL SECTION -->
+  <div class="carousel-section">
+    <div class="carousel-container">
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Cards injected by JS -->
+        </div>
+      </div>
+      <div class="carousel-arrows" id="arrowArea">
+        <button class="arrow-btn" id="prevBtn" onclick="slideCarousel(-1)" disabled>‹</button>
+        <button class="arrow-btn" id="nextBtn" onclick="slideCarousel(1)">›</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end widget-wrapper -->
+
+<!-- CTA BAND (bottom only) -->
+<div class="cta-band">
+  <h2>Ready to Transform Your Restaurant Operations?</h2>
+  <p>Schedule a consultation to quantify labor, accuracy, and CLV impact in your operation.</p>
+  <div class="btn-group">
+    <a href="#" class="btn-yellow">Talk to a Labeling Expert</a>
+    <a href="#" class="btn-outline-white">Get Your ROI Snapshot</a>
+  </div>
+</div>
+
+<script>
+const industryData = {
+  'food-service': {
+    label: 'Restaurant & Food Services',
+    solutions: {
+      'food-order': {
+        label: 'Food Order Management',
+        products: [
+          { name: 'Product 1', href: '#' },
+          { name: 'Product 2', href: '#' },
+          { name: 'Product 3', href: '#' },
+          { name: 'Product 4', href: '#' },
+          { name: 'Product 5', href: '#' },
+          { name: 'Product 6', href: '#' },
+          { name: 'Product 7', href: '#' },
+          { name: 'Product 8', href: '#' }
+        ]
+      },
+      'order-delivery': {
+        label: 'Order Delivery Security',
+        products: [
+          { name: 'Tamper Evident Label', href: '#' },
+          { name: '2-in-1 Bag & Beverage Seal', href: '#' },
+          { name: 'Tamper Seal Dispenser', href: '#' }
+        ]
+      },
+      'food-freshness': {
+        label: 'Food Freshness and Date Coding',
+        products: [
+          { name: 'DT Dissolvable Labels', href: '#' },
+          { name: 'DT Extreme Labels', href: '#' },
+          { name: 'DT Fresh Labels', href: '#' },
+          { name: 'RFID Inventory Management', href: '#' }
+        ]
+      }
+    }
+  }
+};
+
+let currentSolution = 'food-order';
+let carouselOffset = 0;
+const VISIBLE = 4;
+const CARD_WIDTH = 244;
+
+function toggleDropdown() {
+  const btn = document.getElementById('industryBtn');
+  const dd = document.getElementById('industryDropdown');
+  btn.classList.toggle('open');
+  dd.classList.toggle('open');
+}
+
+document.addEventListener('click', function(e) {
+  const wrap = document.querySelector('.industry-dropdown-wrap');
+  if (!wrap.contains(e.target)) {
+    document.getElementById('industryBtn').classList.remove('open');
+    document.getElementById('industryDropdown').classList.remove('open');
+  }
+});
+
+function switchSolution(e, solutionKey) {
+  e.preventDefault();
+  currentSolution = solutionKey;
+  carouselOffset = 0;
+  document.querySelectorAll('.solution-tabs a').forEach(a => a.classList.remove('active'));
+  e.target.classList.add('active');
+  renderCarousel();
+}
+
+function renderCarousel() {
+  const sol = industryData['food-service'].solutions[currentSolution];
+  const products = sol.products;
+  const track = document.getElementById('carouselTrack');
+  const arrowArea = document.getElementById('arrowArea');
+  const arrowNote = document.getElementById('arrowNote');
+
+  track.innerHTML = products.map(p => `
+    <a href="${p.href}" class="product-card">
+      <div class="card-img">PRODUCT<br>PHOTO</div>
+      <div class="card-label">${p.name}</div>
+    </a>
+  `).join('');
+
+  track.style.transform = 'translateX(0)';
+  carouselOffset = 0;
+
+  if (products.length <= 4) {
+    arrowArea.style.display = 'none';
+  } else {
+    arrowArea.style.display = 'flex';
+  }
+  updateArrows(products.length);
+}
+
+function slideCarousel(dir) {
+  const sol = industryData['food-service'].solutions[currentSolution];
+  const total = sol.products.length;
+  const maxOffset = Math.max(0, total - VISIBLE);
+  carouselOffset = Math.max(0, Math.min(carouselOffset + (dir * VISIBLE), maxOffset));
+  document.getElementById('carouselTrack').style.transform = `translateX(-${carouselOffset * CARD_WIDTH}px)`;
+  updateArrows(total);
+}
+
+function updateArrows(total) {
+  document.getElementById('prevBtn').disabled = carouselOffset === 0;
+  document.getElementById('nextBtn').disabled = carouselOffset >= total - VISIBLE;
+}
+
+renderCarousel();
+</script>
+</body>
+</html>
